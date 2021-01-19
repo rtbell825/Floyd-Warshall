@@ -1,6 +1,6 @@
 #include "floyd-warshall.cpp"
 
-int main() {
+void fivePointGraphWithNegatives(int verbose) {
     Graph graph;
     graph.addEdge(0, 1, 3);
     graph.addEdge(0, 2, 8);
@@ -12,6 +12,38 @@ int main() {
     graph.addEdge(3, 2, -5);
     graph.addEdge(4, 3, 6);
     int** fw = graph.floydWarshall();
-    graph.printGraph(fw, 5);
+    int correctOutput[][5] = {
+        {0, 1, -3, 2, -4},
+        {3, 0, -4, 1, -1},
+        {7, 4, 0, 5, 3},
+        {2, -1, -5, 0, -2},
+        {8, 5, 1, 6, 0}
+    };
+    bool passed = true;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (fw[i][j] != correctOutput[i][j]) {
+                passed = false;
+            }
+        }
+    }
+    if (passed == false) {
+        if (verbose == 0) {
+            cout << "failed: fivePointGraphWithNegatives\n";
+        }
+        else {
+            cout << "output:\n";
+            graph.printGraph(fw, 5);
+            cout << "failed: fivePointGraphWithNegatives\n";
+        }
+    }
+    else {
+        cout << "passed: fivePointGraphWithNegatives\n";
+    }
+    return;
+}
+
+int main() {
+    fivePointGraphWithNegatives(1);
     return 0;
 }
