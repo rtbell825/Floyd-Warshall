@@ -16,4 +16,5 @@ This class demonstrates my ability to write object oriented code including the f
 The FW_tester.cpp is used to demonstrate the floyd-warshall.cpp class.
 
 Author: Ryan Bell
+
 Algorithm based on "Introduction to  Algorithms: Third Edition", Cormen, Leiserson, Rivest, Stein. 
